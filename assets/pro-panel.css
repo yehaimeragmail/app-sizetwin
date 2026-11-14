@@ -1,0 +1,157 @@
+/* Go Pro panel styles for the iOS wrapper (injected, never in the app HTML).
+ *
+ * Neutral dark panel on purpose: it has to sit on top of 54 different
+ * apps without clashing with any of them. No bright colours, no gradients,
+ * system font stack only. All selectors are prefixed w2pro- so they can
+ * never collide with the app's own styles.
+ */
+
+.w2pro-pill {
+  position: fixed;
+  right: 14px;
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  z-index: 999998;
+  padding: 9px 14px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(28, 28, 30, 0.92);
+  color: #f5f5f7;
+  font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.w2pro-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.w2pro-panel.w2pro-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.w2pro-sheet {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 82vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 24px 22px calc(22px + env(safe-area-inset-bottom, 0px));
+  border-radius: 22px 22px 0 0;
+  background: #1c1c1e;
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.w2pro-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f5f5f7;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.w2pro-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.w2pro-sub {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #a1a1aa;
+}
+
+.w2pro-benefits {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.w2pro-benefit {
+  position: relative;
+  margin: 0;
+  padding: 7px 0 7px 26px;
+  font-size: 15px;
+  line-height: 1.35;
+  color: #e4e4e7;
+}
+
+.w2pro-benefit::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  color: #a1a1aa;
+  font-weight: 700;
+}
+
+.w2pro-prices {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.w2pro-buy {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f5f5f7;
+  font: 600 16px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+.w2pro-buy-primary {
+  border: none;
+  background: #f5f5f7;
+  color: #1c1c1e;
+}
+
+.w2pro-coming {
+  padding: 10px 0 2px;
+  font-size: 14px;
+  color: #a1a1aa;
+  text-align: center;
+}
+
+.w2pro-row {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 18px;
+}
+
+.w2pro-link {
+  padding: 6px 2px;
+  border: none;
+  background: none;
+  color: #a1a1aa;
+  font: 500 13px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  cursor: pointer;
+}

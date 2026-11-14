@@ -1,0 +1,36 @@
+name: sizetwin
+description: "Thin iOS shell: shows one bundled offline HTML app full-screen in a web view, with Pro purchases, subscriptions and in-app marketing."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  webview_flutter: ^4.13.0
+  # In-app purchases: one-time Pro + monthly/yearly subscriptions.
+  in_app_purchase: ^3.2.0
+  # Native review prompt ("Rate this app").
+  in_app_review: ^2.0.12
+  # Native share sheet.
+  share_plus: ^13.3.1
+  # Local persistence: Pro ownership, launch count, rate-prompt flag.
+  shared_preferences: ^2.5.6
+  # "More apps" cross-promo opens wajiha.fun in the system browser.
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: false
+
+  assets:
+    - assets/app.html
+    - assets/pro-panel.js
+    - assets/pro-panel.css
