@@ -130,17 +130,19 @@
   // NO BUTTONS ON THE SPLASH SCREEN (law, 15 Nov 2026): the floating
   // Pro pill must stay hidden while the app's splash/loader is showing
   // and only appear once the real app screen is up. The pill starts
-  // hidden; the watcher below flips pillAllowed on and shows it.
-  var pillAllowed = false;
+  // hidden. The watcher below runs for the whole life of the page, not
+  // just the first launch: if the splash shows again later (an app can
+  // replay its splash, e.g. Stamp Mark's logo button), the pill hides
+  // again until it is gone. A splash that stays visible for 6s straight
+  // is treated as stuck and the pill shows anyway.
   var pillWatcher = null;
   var scriptStart = Date.now();
+  var splashVisibleSince = 0;
 
   // True when no splash/loader/intro element is still visible on screen.
   // Splashes hide in different ways (removed, display:none, or faded to
   // opacity 0 like Stamp Mark's #splash-overlay), so all three are
-  // treated as gone. Only gates the FIRST showing of the pill: once it
-  // is allowed it stays allowed, so a loading spinner mid-use never
-  // hides the pill again.
+  // treated as gone.
   function splashGone() {
     var els = document.querySelectorAll(
       '[id*="splash" i], [class*="splash" i],' +
@@ -161,26 +163,28 @@
     return true;
   }
 
-  function maybeShowPill() {
-    if (pillAllowed) {
-      if (pillWatcher) { clearInterval(pillWatcher); pillWatcher = null; }
+  // The one place that decides whether the pill shows. Called on a
+  // timer for the life of the page and whenever Pro status changes.
+  function updatePillVisibility() {
+    if (!pill) return;
+    if (cachedPro) { pill.style.display = 'none'; return; }
+    var elapsed = (Date.now() - scriptStart) / 1000;
+    if (elapsed < 1.8) { pill.style.display = 'none'; return; } // never at the very start
+    if (splashGone()) {
+      splashVisibleSince = 0;
+      pill.style.display = '';
       return;
     }
-    var elapsed = (Date.now() - scriptStart) / 1000;
-    if (elapsed < 1.8) return; // never during the first moments of load
-    // Splash gone, or give up after 6s so a splash we cannot detect
-    // can never hide the pill forever.
-    if (elapsed >= 6 || splashGone()) {
-      pillAllowed = true;
-      if (pillWatcher) { clearInterval(pillWatcher); pillWatcher = null; }
-      updateProUI();
-    }
+    if (splashVisibleSince === 0) splashVisibleSince = Date.now();
+    var visibleFor = (Date.now() - splashVisibleSince) / 1000;
+    // Splash stuck (or one we cannot detect): show the pill anyway.
+    pill.style.display = visibleFor >= 6 ? '' : 'none';
   }
 
   function startPillWatcher() {
     if (pillWatcher) return;
-    maybeShowPill();
-    if (!pillAllowed) pillWatcher = setInterval(maybeShowPill, 400);
+    updatePillVisibility();
+    pillWatcher = setInterval(updatePillVisibility, 400);
   }
 
   function benefitItems() {
@@ -211,6 +215,33 @@
         '<button class="w2pro-close" id="w2pro-close" aria-label="Close">\u00d7</button>' +
         '<div class="w2pro-title">Go Pro</div>' +
         '<div class="w2pro-sub">' + esc(appName) + ' Pro</div>' +
+        // Full details page: what the user gets in each mode, so the
+        // three options are never a mystery. Free is the app's main
+        // features, free forever. One-time Pro pays once and is Pro
+        // forever. Monthly and Yearly are Pro while subscribed and can
+        // be cancelled anytime. Prices are filled in by native when the
+        // store answers; a plan whose product does not exist yet is
+        // hidden, never shown with a fake price.
+        '<div class="w2pro-plans">' +
+          '<div class="w2pro-plans-title">What you get</div>' +
+          '<div class="w2pro-plan">' +
+            '<div class="w2pro-plan-name">Free</div>' +
+            '<div class="w2pro-plan-desc">The app\u2019s main features, free forever. No payment, no trial, no expiry.</div>' +
+          '</div>' +
+          '<div class="w2pro-plan" id="w2pro-plan-pro">' +
+            '<div class="w2pro-plan-name">One-time Pro <span class="w2pro-plan-price" id="w2pro-price-pro"></span></div>' +
+            '<div class="w2pro-plan-desc">Pay once, Pro forever. Everything Pro unlocks, yours for good \u2014 no subscription, nothing to cancel.</div>' +
+          '</div>' +
+          '<div class="w2pro-plan" id="w2pro-plan-monthly">' +
+            '<div class="w2pro-plan-name">Monthly <span class="w2pro-plan-price" id="w2pro-price-monthly"></span></div>' +
+            '<div class="w2pro-plan-desc">Pro while you subscribe. Renews each month, cancel anytime.</div>' +
+          '</div>' +
+          '<div class="w2pro-plan" id="w2pro-plan-yearly">' +
+            '<div class="w2pro-plan-name">Yearly <span class="w2pro-plan-price" id="w2pro-price-yearly"></span></div>' +
+            '<div class="w2pro-plan-desc">Pro while you subscribe, best value. Renews each year, cancel anytime.</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="w2pro-plans-title">Included in Pro</div>' +
         '<ul class="w2pro-benefits">' + benefitItems() + '</ul>' +
         '<div class="w2pro-prices" id="w2pro-prices">' +
           '<button class="w2pro-buy w2pro-buy-primary" id="w2pro-buy-pro">Go Pro</button>' +
@@ -250,18 +281,34 @@
       'w2pro-buy-monthly': data.monthly,
       'w2pro-buy-yearly': data.yearly
     };
+    var planMap = {
+      'w2pro-buy-pro': 'w2pro-plan-pro',
+      'w2pro-buy-monthly': 'w2pro-plan-monthly',
+      'w2pro-buy-yearly': 'w2pro-plan-yearly'
+    };
+    var priceMap = {
+      'w2pro-buy-pro': 'w2pro-price-pro',
+      'w2pro-buy-monthly': 'w2pro-price-monthly',
+      'w2pro-buy-yearly': 'w2pro-price-yearly'
+    };
     for (var id in map) {
       var btn = document.getElementById(id);
       if (!btn) continue;
       var info = map[id];
+      var planRow = document.getElementById(planMap[id]);
+      var priceSpan = document.getElementById(priceMap[id]);
       if (info && info.available) {
         any = true;
         btn.style.display = '';
         var label = btn.id === 'w2pro-buy-pro' ? 'Go Pro' :
           btn.id === 'w2pro-buy-monthly' ? 'Monthly' : 'Yearly';
         btn.textContent = info.price ? label + ' \u00b7 ' + info.price : label;
+        if (planRow) planRow.style.display = '';
+        if (priceSpan) priceSpan.textContent = info.price ? '\u00b7 ' + info.price : '';
       } else {
         btn.style.display = 'none';
+        if (planRow) planRow.style.display = 'none';
+        if (priceSpan) priceSpan.textContent = '';
       }
     }
     var coming = document.getElementById('w2pro-coming');
@@ -270,8 +317,8 @@
 
   function updateProUI() {
     // Pro owners do not need the upsell pill. The pill also stays
-    // hidden until the splash is gone (pillAllowed).
-    if (pill) pill.style.display = (cachedPro || !pillAllowed) ? 'none' : '';
+    // hidden while a splash is showing (see updatePillVisibility).
+    updatePillVisibility();
     if (cachedPro) hidePanel();
   }
 

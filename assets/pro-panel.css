@@ -83,6 +83,50 @@
   color: #a1a1aa;
 }
 
+.w2pro-plans {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.w2pro-plans-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.w2pro-plans + .w2pro-plans-title {
+  margin-top: 18px;
+}
+
+.w2pro-plan {
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.w2pro-plan-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f5f5f7;
+}
+
+.w2pro-plan-price {
+  font-weight: 600;
+  color: #a1a1aa;
+}
+
+.w2pro-plan-desc {
+  margin-top: 3px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #d4d4d8;
+}
+
 .w2pro-benefits {
   margin: 16px 0 0;
   padding: 0;
