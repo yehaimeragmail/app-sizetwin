@@ -127,6 +127,62 @@
   var panel = null;
   var pill = null;
 
+  // NO BUTTONS ON THE SPLASH SCREEN (law, 15 Nov 2026): the floating
+  // Pro pill must stay hidden while the app's splash/loader is showing
+  // and only appear once the real app screen is up. The pill starts
+  // hidden; the watcher below flips pillAllowed on and shows it.
+  var pillAllowed = false;
+  var pillWatcher = null;
+  var scriptStart = Date.now();
+
+  // True when no splash/loader/intro element is still visible on screen.
+  // Splashes hide in different ways (removed, display:none, or faded to
+  // opacity 0 like Stamp Mark's #splash-overlay), so all three are
+  // treated as gone. Only gates the FIRST showing of the pill: once it
+  // is allowed it stays allowed, so a loading spinner mid-use never
+  // hides the pill again.
+  function splashGone() {
+    var els = document.querySelectorAll(
+      '[id*="splash" i], [class*="splash" i],' +
+      '[id*="loader" i], [class*="loader" i],' +
+      '[id*="loading" i], [class*="loading" i],' +
+      '[id*="intro" i], [class*="intro" i]'
+    );
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el === pill || el === panel) continue;
+      var cs = window.getComputedStyle(el);
+      if (!cs || cs.display === 'none' || cs.visibility === 'hidden') continue;
+      var op = parseFloat(cs.opacity);
+      if (!isNaN(op) && op < 0.05) continue;
+      var r = el.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0) return false;
+    }
+    return true;
+  }
+
+  function maybeShowPill() {
+    if (pillAllowed) {
+      if (pillWatcher) { clearInterval(pillWatcher); pillWatcher = null; }
+      return;
+    }
+    var elapsed = (Date.now() - scriptStart) / 1000;
+    if (elapsed < 1.8) return; // never during the first moments of load
+    // Splash gone, or give up after 6s so a splash we cannot detect
+    // can never hide the pill forever.
+    if (elapsed >= 6 || splashGone()) {
+      pillAllowed = true;
+      if (pillWatcher) { clearInterval(pillWatcher); pillWatcher = null; }
+      updateProUI();
+    }
+  }
+
+  function startPillWatcher() {
+    if (pillWatcher) return;
+    maybeShowPill();
+    if (!pillAllowed) pillWatcher = setInterval(maybeShowPill, 400);
+  }
+
   function benefitItems() {
     var out = '';
     for (var i = 0; i < benefits.length; i++) {
@@ -142,6 +198,8 @@
     pill.id = 'w2pro-pill';
     pill.className = 'w2pro-pill';
     pill.textContent = '\u2605 Pro';
+    // Hidden until the splash is gone (see pill watcher below).
+    pill.style.display = 'none';
     pill.addEventListener('click', showPanel);
     document.body.appendChild(pill);
 
@@ -178,6 +236,10 @@
     panel.addEventListener('click', function (e) {
       if (e.target === panel) hidePanel();
     });
+
+    // Start the splash watcher: the pill appears only once the app's
+    // splash screen is gone (no buttons on the splash, for every app).
+    startPillWatcher();
   }
 
   function updateProductButtons(data) {
@@ -207,8 +269,9 @@
   }
 
   function updateProUI() {
-    // Pro owners do not need the upsell pill.
-    if (pill) pill.style.display = cachedPro ? 'none' : '';
+    // Pro owners do not need the upsell pill. The pill also stays
+    // hidden until the splash is gone (pillAllowed).
+    if (pill) pill.style.display = (cachedPro || !pillAllowed) ? 'none' : '';
     if (cachedPro) hidePanel();
   }
 

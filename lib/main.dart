@@ -259,10 +259,16 @@ class _WebViewPageState extends State<WebViewPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        // The HTML apps already handle their own safe areas (viewport-fit:
-        // cover), so the web view gets the full screen edge to edge.
-        top: false,
-        bottom: false,
+        // The web view MUST be inset by the native safe area (status bar
+        // on top, home indicator at the bottom). The HTML apps cannot do
+        // this themselves: env(safe-area-inset-*) reads as 0 inside this
+        // WKWebView, so an app that relies on it draws its header under
+        // the status bar and its bottom sheet under the home indicator
+        // (seen on a real iPhone 12, Stamp Mark, 15 Nov 2026). With the
+        // web view already inset, env() inside reads 0, so the apps'
+        // own safe-area paddings add nothing extra — no double padding.
+        top: true,
+        bottom: true,
         child: WebViewWidget(controller: _controller),
       ),
     );
