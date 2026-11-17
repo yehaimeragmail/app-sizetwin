@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#FBF9F6">
+    <meta name="theme-color" content="#FDF2F8">
     <title>SizeTwin — Offline Clothes & Shoe Fit Translator Across Brands</title>
     <script>
 /* Tailwind CSS Play CDN v3 (cdn.tailwindcss.com) — inlined for offline use.
@@ -213,15 +213,15 @@ Check your Browserslist config to be sure that your targets are set up correctly
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        silkCanvas: '#FBF9F6',
+                        silkCanvas: '#FFFFFF',
                         garmentWhite: '#FFFFFF',
-                        stitchedLine: '#E8E1D7',
-                        unbleachedLinen: '#F3EDE4',
-                        espressoInk: '#231F1E',
-                        taupeMuted: '#7A716A',
-                        burgundySilk: '#8E3B46',
-                        peacockTeal: '#1F5E5B',
-                        antiqueBrass: '#B8860B',
+                        stitchedLine: '#FBCFE8',
+                        unbleachedLinen: '#FCE7F3',
+                        espressoInk: '#500724',
+                        taupeMuted: '#9D174D',
+                        burgundySilk: '#DB2777',
+                        peacockTeal: '#0EA5E9',
+                        antiqueBrass: '#DB2777',
                     }
                 }
             }
@@ -240,11 +240,11 @@ Check your Browserslist config to be sure that your targets are set up correctly
         html, body {
             margin: 0;
             padding: 0;
-            background-color: #EFEAE1;
+            background-color: #FDF2F8;
             background-image:
-                radial-gradient(circle at 18% 12%, rgba(142, 59, 70, 0.06) 0%, transparent 45%),
-                radial-gradient(circle at 85% 88%, rgba(31, 94, 91, 0.06) 0%, transparent 45%);
-            color: #231F1E;
+                radial-gradient(circle at 18% 12%, rgba(219, 39, 119, 0.06) 0%, transparent 45%),
+                radial-gradient(circle at 85% 88%, rgba(14, 165, 233, 0.06) 0%, transparent 45%);
+            color: #500724;
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             min-height: 100dvh;
             overflow-x: hidden;
@@ -264,52 +264,52 @@ Check your Browserslist config to be sure that your targets are set up correctly
             width: 100%;
             max-width: 430px;
             min-height: 100dvh;
-            background-color: #FBF9F6;
+            background-color: #FFFFFF;
             position: relative;
             display: flex;
             flex-direction: column;
-            border-left: 1px solid #E8E1D7;
-            border-right: 1px solid #E8E1D7;
-            box-shadow: 0 24px 64px rgba(35, 31, 30, 0.09);
+            border-left: 1px solid #FBCFE8;
+            border-right: 1px solid #FBCFE8;
+            box-shadow: 0 24px 64px rgba(80, 7, 36, 0.09);
             overflow-x: hidden;
         }
 
         /* Elevated Stitched Garment Card */
         .atelier-card {
             background-color: #FFFFFF;
-            border: 1px solid #E8E1D7;
-            border-radius: 20px;
-            box-shadow: 0 4px 18px rgba(45, 36, 28, 0.04);
+            border: 1px solid #FBCFE8;
+            border-radius: 24px;
+            box-shadow: 0 4px 18px rgba(80, 7, 36, 0.04);
         }
 
         .linen-well {
-            background-color: #F3EDE4;
-            border: 1px solid #E8E1D7;
-            border-radius: 14px;
+            background-color: #FCE7F3;
+            border: 1px solid #FBCFE8;
+            border-radius: 24px;
         }
 
         .stitched-divider {
-            border-top: 1px dashed #D8CEC0;
+            border-top: 1px dashed #F9A8D4;
         }
 
         /* Antique Brass Tailor's Tape Ruler Strip */
         .tailor-tape-strip {
             height: 6px;
-            background-color: #F6E6B4;
+            background-color: #FCE7F3;
             background-image: repeating-linear-gradient(
                 90deg,
-                #8C6405 0px,
-                #8C6405 1px,
+                #DB2777 0px,
+                #DB2777 1px,
                 transparent 1px,
                 transparent 8px
             );
-            border-top: 1px solid #D4B459;
-            border-bottom: 1px solid #D4B459;
+            border-top: 1px solid #F472B6;
+            border-bottom: 1px solid #F472B6;
         }
 
         .atelier-pill {
             background-color: #FFFFFF;
-            border: 1px solid #E8E1D7;
+            border: 1px solid #FBCFE8;
             transition: transform 0.14s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.16s ease, border-color 0.16s ease;
             cursor: pointer;
         }
@@ -330,7 +330,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
         input[type="range"].caliper-slider::-webkit-slider-runnable-track {
             width: 100%;
             height: 5px;
-            background: #E8E1D7;
+            background: #FBCFE8;
             border-radius: 999px;
         }
         input[type="range"].caliper-slider::-webkit-slider-thumb {
@@ -339,10 +339,10 @@ Check your Browserslist config to be sure that your targets are set up correctly
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            background: #8E3B46;
+            background: #DB2777;
             border: 2.5px solid #FFFFFF;
             margin-top: -6.5px;
-            box-shadow: 0 2px 6px rgba(35, 31, 30, 0.25);
+            box-shadow: 0 2px 6px rgba(80, 7, 36, 0.25);
             transition: transform 0.12s ease;
         }
         input[type="range"].caliper-slider:active::-webkit-slider-thumb {
@@ -362,6 +362,11 @@ Check your Browserslist config to be sure that your targets are set up correctly
             animation: atelierSheetUp 0.26s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
     </style>
+
+  <!-- THEME OVERRIDE — Batch D (Fitting Room), Nov 17 2026: roster theme, appearance only -->
+  <style id="theme-override-D">
+  .atelier-card{box-shadow:0 8px 24px rgba(219,39,119,.12)!important}
+  </style>
 </head>
 <body>
 
@@ -369,7 +374,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
     <!-- ===================================================================== -->
     <!-- 1. TOP ATELIER HEADER, MULTI-PROFILE SWITCHER & UNIT TOGGLE           -->
     <!-- ===================================================================== -->
-    <header class="sticky top-0 z-30 bg-[#FBF9F6]/95 backdrop-blur-xl border-b border-stitchedLine">
+    <header class="sticky top-0 z-30 bg-[#FFFFFF]/95 backdrop-blur-xl border-b border-stitchedLine">
         <div class="px-4 pt-3.5 pb-2.5">
             <!-- Row 1: SizeTwin Mark + Unit Pill + Pro Button -->
             <div class="flex items-center justify-between gap-2">
@@ -398,7 +403,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
                         <span id="unit-toggle-label">IN / US</span>
                     </button>
 
-                    <button id="header-pro-btn" class="px-2.5 py-1.5 rounded-xl bg-burgundySilk hover:bg-[#772F39] text-white font-mono text-[10px] font-bold flex items-center gap-1 shadow-xs active:scale-95 transition-all">
+                    <button id="header-pro-btn" class="px-2.5 py-1.5 rounded-xl bg-burgundySilk hover:bg-[#9D174D] text-white font-mono text-[10px] font-bold flex items-center gap-1 shadow-xs active:scale-95 transition-all">
                         <span>✦</span>
                         <span id="header-pro-label">Pro $3.99/mo</span>
                     </button>
@@ -460,12 +465,12 @@ Check your Browserslist config to be sure that your targets are set up correctly
                     <div>
                         <div class="flex items-center gap-1.5">
                             <span id="hero-brand-origin" class="font-mono text-[9.5px] font-bold uppercase tracking-wider text-taupeMuted">SPAIN · EUROPEAN CUT</span>
-                            <span id="hero-kids-buffer-pill" class="hidden font-mono text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300">+1.5cm Growth</span>
+                            <span id="hero-kids-buffer-pill" class="hidden font-mono text-[9px] font-bold px-1.5 py-0.5 rounded bg-pink-100 text-pink-900 border border-pink-300">+1.5cm Growth</span>
                         </div>
                         <h2 id="hero-brand-title" class="font-serif font-bold text-2xl text-espressoInk leading-tight mt-0.5">Zara</h2>
                     </div>
 
-                    <div class="px-2.5 py-1.5 rounded-xl bg-teal-50 border border-peacockTeal/30 text-right shrink-0">
+                    <div class="px-2.5 py-1.5 rounded-xl bg-sky-50 border border-peacockTeal/30 text-right shrink-0">
                         <div id="hero-confidence-pct" class="font-mono font-extrabold text-sm text-peacockTeal tabular-nums leading-none">98%</div>
                         <div class="font-mono text-[8.5px] font-bold uppercase text-taupeMuted mt-1">TAILOR MATCH</div>
                     </div>
@@ -559,19 +564,19 @@ Check your Browserslist config to be sure that your targets are set up correctly
                     <div class="w-24 h-44 rounded-2xl linen-well flex items-center justify-center shrink-0 p-2">
                         <svg id="mannequin-svg" class="w-full h-full" viewBox="0 0 120 220" fill="none">
                             <!-- Center Plumb Line -->
-                            <line x1="60" y1="10" x2="60" y2="210" stroke="#B8860B" stroke-width="1" stroke-dasharray="3 3" />
+                            <line x1="60" y1="10" x2="60" y2="210" stroke="#DB2777" stroke-width="1" stroke-dasharray="3 3" />
                             <!-- Dress Form Neck & Collar -->
-                            <rect x="52" y="16" width="16" height="14" rx="4" fill="#231F1E" />
+                            <rect x="52" y="16" width="16" height="14" rx="4" fill="#500724" />
                             <!-- Dynamic Torso Polygon (Updated by JS sliders) -->
-                            <path id="mannequin-torso-path" d="M32 38 L88 38 L82 78 L76 112 L84 142 L36 142 L44 112 L38 78 Z" fill="#FFFFFF" stroke="#231F1E" stroke-width="2" />
+                            <path id="mannequin-torso-path" d="M32 38 L88 38 L82 78 L76 112 L84 142 L36 142 L44 112 L38 78 Z" fill="#FFFFFF" stroke="#500724" stroke-width="2" />
                             <!-- Horizontal Tailor Measurement Lines -->
-                            <line id="line-shoulder" x1="26" y1="38" x2="94" y2="38" stroke="#8E3B46" stroke-width="2" />
-                            <line id="line-chest" x1="30" y1="74" x2="90" y2="74" stroke="#1F5E5B" stroke-width="2" />
-                            <line id="line-waist" x1="38" y1="110" x2="82" y2="110" stroke="#B8860B" stroke-width="2" />
-                            <line id="line-hips" x1="30" y1="140" x2="90" y2="140" stroke="#8E3B46" stroke-width="2" />
+                            <line id="line-shoulder" x1="26" y1="38" x2="94" y2="38" stroke="#DB2777" stroke-width="2" />
+                            <line id="line-chest" x1="30" y1="74" x2="90" y2="74" stroke="#0EA5E9" stroke-width="2" />
+                            <line id="line-waist" x1="38" y1="110" x2="82" y2="110" stroke="#DB2777" stroke-width="2" />
+                            <line id="line-hips" x1="30" y1="140" x2="90" y2="140" stroke="#DB2777" stroke-width="2" />
                             <!-- Legs / Inseam Lines -->
-                            <line x1="48" y1="142" x2="46" y2="202" stroke="#231F1E" stroke-width="2.5" stroke-linecap="round" />
-                            <line x1="72" y1="142" x2="74" y2="202" stroke="#231F1E" stroke-width="2.5" stroke-linecap="round" />
+                            <line x1="48" y1="142" x2="46" y2="202" stroke="#500724" stroke-width="2.5" stroke-linecap="round" />
+                            <line x1="72" y1="142" x2="74" y2="202" stroke="#500724" stroke-width="2.5" stroke-linecap="round" />
                         </svg>
                     </div>
 
@@ -657,7 +662,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
                         </select>
                     </div>
 
-                    <button id="triangulate-fit-btn" class="w-full py-3 rounded-xl bg-peacockTeal hover:bg-teal-900 text-white font-bold text-xs shadow-sm active:scale-98 transition-all">
+                    <button id="triangulate-fit-btn" class="w-full py-3 rounded-xl bg-peacockTeal hover:bg-sky-900 text-white font-bold text-xs shadow-sm active:scale-98 transition-all">
                         ✦ Triangulate True Body Dimensions
                     </button>
                 </div>
@@ -709,7 +714,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
                         <span class="font-mono text-[9.5px] font-bold uppercase tracking-wider text-peacockTeal">HOUSEHOLD & GIFTING</span>
                         <h2 class="font-serif font-bold text-base text-espressoInk mt-0.5">Saved Fit Profiles</h2>
                     </div>
-                    <button id="open-add-profile-btn" class="px-3 py-1.5 rounded-xl bg-burgundySilk hover:bg-[#772F39] text-white text-xs font-bold active:scale-95 transition-all">
+                    <button id="open-add-profile-btn" class="px-3 py-1.5 rounded-xl bg-burgundySilk hover:bg-[#9D174D] text-white text-xs font-bold active:scale-95 transition-all">
                         + Add Profile
                     </button>
                 </div>
@@ -730,43 +735,43 @@ Check your Browserslist config to be sure that your targets are set up correctly
                 </div>
 
                 <!-- Styled Couture Gift Card Preview -->
-                <div id="gift-passport-card" class="rounded-2xl bg-[#231F1E] text-[#FBF9F6] p-4 border border-antiqueBrass/50 space-y-3 relative overflow-hidden">
+                <div id="gift-passport-card" class="rounded-2xl bg-[#500724] text-[#FFFFFF] p-4 border border-antiqueBrass/50 space-y-3 relative overflow-hidden">
                     <div class="flex items-start justify-between gap-2 border-b border-white/15 pb-2.5">
                         <div>
-                            <div class="font-mono text-[9px] font-bold uppercase tracking-widest text-amber-300">SIZETWIN ATELIER PASSPORT</div>
+                            <div class="font-mono text-[9px] font-bold uppercase tracking-widest text-pink-300">SIZETWIN ATELIER PASSPORT</div>
                             <h4 id="passport-owner-name" class="font-serif font-bold text-xl text-white mt-0.5">Me (Alex · 5'10")</h4>
                         </div>
-                        <span id="passport-fit-pref" class="font-mono text-[9.5px] font-bold px-2 py-0.5 rounded bg-white/10 text-amber-200 uppercase">
+                        <span id="passport-fit-pref" class="font-mono text-[9.5px] font-bold px-2 py-0.5 rounded bg-white/10 text-pink-200 uppercase">
                             REGULAR FIT
                         </span>
                     </div>
 
                     <div class="grid grid-cols-2 gap-2 text-xs">
                         <div class="p-2.5 rounded-xl bg-white/[0.07]">
-                            <div class="font-mono text-[9px] text-stone-400">TOPS & KNITS</div>
+                            <div class="font-mono text-[9px] text-pink-400">TOPS & KNITS</div>
                             <div id="passport-top-size" class="font-serif font-bold text-base text-white mt-0.5">Size M / L</div>
-                            <div id="passport-top-spec" class="font-mono text-[9.5px] text-amber-200/90 mt-0.5">Chest 39.4 in</div>
+                            <div id="passport-top-spec" class="font-mono text-[9.5px] text-pink-200/90 mt-0.5">Chest 39.4 in</div>
                         </div>
                         <div class="p-2.5 rounded-xl bg-white/[0.07]">
-                            <div class="font-mono text-[9px] text-stone-400">DENIM & TROUSERS</div>
+                            <div class="font-mono text-[9px] text-pink-400">DENIM & TROUSERS</div>
                             <div id="passport-denim-size" class="font-serif font-bold text-base text-white mt-0.5">32 × 32</div>
-                            <div id="passport-denim-spec" class="font-mono text-[9.5px] text-amber-200/90 mt-0.5">Waist 32.3 in</div>
+                            <div id="passport-denim-spec" class="font-mono text-[9.5px] text-pink-200/90 mt-0.5">Waist 32.3 in</div>
                         </div>
                         <div class="p-2.5 rounded-xl bg-white/[0.07]">
-                            <div class="font-mono text-[9px] text-stone-400">SNEAKERS & SHOES</div>
+                            <div class="font-mono text-[9px] text-pink-400">SNEAKERS & SHOES</div>
                             <div id="passport-shoe-size" class="font-serif font-bold text-base text-white mt-0.5">US 9 / EU 42.5</div>
-                            <div id="passport-shoe-spec" class="font-mono text-[9.5px] text-amber-200/90 mt-0.5">Foot 27.0 cm</div>
+                            <div id="passport-shoe-spec" class="font-mono text-[9.5px] text-pink-200/90 mt-0.5">Foot 27.0 cm</div>
                         </div>
                         <div class="p-2.5 rounded-xl bg-white/[0.07]">
-                            <div class="font-mono text-[9px] text-stone-400">OUTERWEAR</div>
+                            <div class="font-mono text-[9px] text-pink-400">OUTERWEAR</div>
                             <div id="passport-coat-size" class="font-serif font-bold text-base text-white mt-0.5">Size L (42)</div>
-                            <div class="font-mono text-[9.5px] text-amber-200/90 mt-0.5">Layering Ease</div>
+                            <div class="font-mono text-[9.5px] text-pink-200/90 mt-0.5">Layering Ease</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-2">
-                    <button id="copy-passport-btn" class="py-2.5 px-3 rounded-xl bg-espressoInk hover:bg-zinc-800 text-white font-bold text-xs active:scale-95 transition-all">
+                    <button id="copy-passport-btn" class="py-2.5 px-3 rounded-xl bg-espressoInk hover:bg-pink-800 text-white font-bold text-xs active:scale-95 transition-all">
                         📋 Copy Size Card
                     </button>
                     <button id="download-passport-png-btn" class="py-2.5 px-3 rounded-xl atelier-pill hover:bg-unbleachedLinen text-espressoInk font-bold text-xs active:scale-95 transition-all">
@@ -816,7 +821,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
     <!-- ===================================================================== -->
     <!-- MODAL 1: ADD FAMILY OR GIFT PROFILE SHEET                             -->
     <!-- ===================================================================== -->
-    <div id="add-profile-modal" class="fixed inset-0 z-50 hidden items-end justify-center bg-stone-950/55 backdrop-blur-xs p-3">
+    <div id="add-profile-modal" class="fixed inset-0 z-50 hidden items-end justify-center bg-pink-950/55 backdrop-blur-xs p-3">
         <div class="w-full max-w-[415px] atelier-card p-5 sheet-up">
             <div class="flex items-center justify-between border-b border-stitchedLine pb-3 mb-3">
                 <div>
@@ -851,7 +856,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
                     </div>
                 </div>
 
-                <button type="submit" class="w-full py-3 rounded-xl bg-burgundySilk hover:bg-[#772F39] text-white font-bold text-sm shadow-sm mt-1">
+                <button type="submit" class="w-full py-3 rounded-xl bg-burgundySilk hover:bg-[#9D174D] text-white font-bold text-sm shadow-sm mt-1">
                     Save Profile to Household
                 </button>
             </form>
@@ -861,9 +866,9 @@ Check your Browserslist config to be sure that your targets are set up correctly
     <!-- ===================================================================== -->
     <!-- MODAL 2: APPLE STOREKIT PRO SUBSCRIPTION SHEET ($3.99/mo · $24.99/yr) -->
     <!-- ===================================================================== -->
-    <div id="pro-modal" class="fixed inset-0 z-50 hidden items-end justify-center bg-stone-950/60 backdrop-blur-xs p-3">
+    <div id="pro-modal" class="fixed inset-0 z-50 hidden items-end justify-center bg-pink-950/60 backdrop-blur-xs p-3">
         <div class="w-full max-w-[415px] atelier-card p-5 sheet-up">
-            <div class="w-10 h-1 rounded-full bg-stone-300 mx-auto mb-3"></div>
+            <div class="w-10 h-1 rounded-full bg-pink-300 mx-auto mb-3"></div>
             <div class="flex items-start justify-between gap-2 border-b border-stitchedLine pb-3">
                 <div>
                     <span class="inline-block px-2.5 py-0.5 rounded-full bg-burgundySilk/10 border border-burgundySilk/30 font-mono text-[9.5px] font-bold text-burgundySilk uppercase">
@@ -907,7 +912,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
             </div>
 
             <div class="mt-4 space-y-2">
-                <button id="unlock-pro-demo-btn" class="w-full py-3 rounded-xl bg-burgundySilk hover:bg-[#772F39] text-white font-bold text-sm shadow-sm active:scale-99 transition-all">
+                <button id="unlock-pro-demo-btn" class="w-full py-3 rounded-xl bg-burgundySilk hover:bg-[#9D174D] text-white font-bold text-sm shadow-sm active:scale-99 transition-all">
                     Unlock Pro Demo (Test Family Profiles & All Brands)
                 </button>
                 <button id="revert-free-btn" class="w-full py-2 rounded-xl linen-well text-xs font-semibold text-taupeMuted">
@@ -1578,7 +1583,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
                 ${prof.type === 'kid' ? `
                     <div class="mt-2.5 pt-2 stitched-divider flex items-center justify-between">
                         <span class="text-[11px] font-semibold text-peacockTeal">Kids Seasonal Growth Buffer (+1.5 cm)</span>
-                        <input type="checkbox" class="kid-growth-checkbox w-4 h-4 accent-[#1F5E5B] cursor-pointer" ${prof.growthBuffer ? 'checked' : ''} />
+                        <input type="checkbox" class="kid-growth-checkbox w-4 h-4 accent-[#0EA5E9] cursor-pointer" ${prof.growthBuffer ? 'checked' : ''} />
                     </div>
                 ` : ''}
             `;
@@ -1641,14 +1646,14 @@ Check your Browserslist config to be sure that your targets are set up correctly
         canvas.height = 600;
         const ctx = canvas.getContext('2d');
 
-        ctx.fillStyle = '#231F1E';
+        ctx.fillStyle = '#500724';
         ctx.fillRect(0, 0, 900, 600);
 
-        ctx.strokeStyle = '#B8860B';
+        ctx.strokeStyle = '#DB2777';
         ctx.lineWidth = 4;
         ctx.strokeRect(32, 32, 836, 536);
 
-        ctx.fillStyle = '#F6E6B4';
+        ctx.fillStyle = '#FCE7F3';
         ctx.font = 'bold 22px monospace';
         ctx.fillText('SIZETWIN ATELIER VERIFIED SIZE PASSPORT', 64, 92);
 
@@ -1661,7 +1666,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
         const shoeStr = document.getElementById('passport-shoe-size').textContent;
         const coatStr = document.getElementById('passport-coat-size').textContent;
 
-        ctx.fillStyle = '#D4B459';
+        ctx.fillStyle = '#F472B6';
         ctx.font = 'bold 24px monospace';
         ctx.fillText(`TOPS & KNITS:      ${topStr}`, 64, 250);
         ctx.fillText(`DENIM & TROUSERS:  ${denimStr}`, 64, 320);
@@ -1900,7 +1905,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
     if (document.getElementById('w2pro-style')) return;
     var st = document.createElement('style');
     st.id = 'w2pro-style';
-    st.textContent = '.w2pro-badge{display:inline-flex;align-items:center;justify-content:center;margin-left:6px;padding:1px 6px;border-radius:999px;background:linear-gradient(135deg,#f6c945,#b8860b);color:#fff;font-size:9px;font-weight:800;line-height:1.5;letter-spacing:.05em;vertical-align:middle;pointer-events:none;white-space:nowrap}';
+    st.textContent = '.w2pro-badge{display:inline-flex;align-items:center;justify-content:center;margin-left:6px;padding:1px 6px;border-radius:999px;background:linear-gradient(135deg,#FBBF24,#DB2777);color:#fff;font-size:9px;font-weight:800;line-height:1.5;letter-spacing:.05em;vertical-align:middle;pointer-events:none;white-space:nowrap}';
     document.head.appendChild(st);
   }
   function applyLock() {

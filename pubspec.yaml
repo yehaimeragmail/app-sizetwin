@@ -2,7 +2,7 @@ name: sizetwin
 description: "Thin iOS shell: shows one bundled offline HTML app full-screen in a web view, with Pro purchases, subscriptions and in-app marketing."
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ^3.13.5
